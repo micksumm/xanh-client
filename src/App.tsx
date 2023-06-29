@@ -1,24 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState} from 'react';
 import './App.css';
+import axios from 'axios';
+
+interface Plant {
+  name: string;
+  scientificName: string;
+}
+const defaultPlants: Plant[] = [];
 
 function App() {
+  const [plants, setPlants]: [Plant[], (plants: Plant[]) => void] = React.useState(
+    defaultPlants
+  );
+
+  React.useEffect(() => {
+    axios.get<Plant[]>('/plants')
+      .then((response) => {
+        setPlants(response.data);
+      })
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ul className="posts">
+        {plants.map((plant) => (
+          <li key={plant.name}>
+            <h3>{plant.name}</h3>
+            <p>{plant.scientificName}</p>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
