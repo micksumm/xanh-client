@@ -1,6 +1,7 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect} from 'react';
 import './App.css';
 import axios from 'axios';
+import CreatePlantComponent from './CreatePlantComponent';
 
 interface Plant {
   name: string;
@@ -9,11 +10,11 @@ interface Plant {
 const defaultPlants: Plant[] = [];
 
 function App() {
-  const [plants, setPlants]: [Plant[], (plants: Plant[]) => void] = React.useState(
+  const [plants, setPlants]: [Plant[], (plants: Plant[]) => void] = useState(
     defaultPlants
   );
 
-  React.useEffect(() => {
+  useEffect(() => {
     axios.get<Plant[]>('/plants')
       .then((response) => {
         setPlants(response.data);
@@ -21,15 +22,18 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <ul className="posts">
-        {plants.map((plant) => (
-          <li key={plant.name}>
-            <h3>{plant.name}</h3>
-            <p>{plant.scientificName}</p>
-          </li>
-        ))}
-      </ul>
+    <div>
+      <CreatePlantComponent/>
+      <div className="App">
+        <div className="card-container">
+          {plants.map((plant) => (
+            <div key={plant.name} className="card">
+              <h3 className="card-title">{plant.name}</h3>
+              <p className="card-text">{plant.scientificName}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
