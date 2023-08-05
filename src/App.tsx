@@ -23,9 +23,11 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <CreatePlantComponent/>
-      <EditPlantComponent/>
+    <div className="background">
+      <div className="container">
+        <CreatePlantComponent />
+        <EditPlantComponent />
+      </div>
       <div className="App">
         <div className="card-container">
           {plants.map((plant) => (

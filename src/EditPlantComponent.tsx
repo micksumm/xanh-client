@@ -62,41 +62,41 @@ function EditPlantComponent() {
           });
       };
 
-    return (
-      <div>
-        <h3>Updating</h3>
-        <form onSubmit={handleSubmit}>
-          <label>
-            Old Name:
-            <input
-            type="text"
-            name="name"
-            value={plantData.plantName}
-            onChange={handlePlantName}
-          />
-          </label>
-          <label>
-            Name:
-            <input
-              type="text"
-              name="name"
-              value={plantData.updatedPlant.name}
-              onChange={handleNameChange}
-            />
-          </label>
-          <label>
-            ScientificName:
-            <input
-              type="text"
-              name="scientificName"
-              value={plantData.updatedPlant.scientificName}
-              onChange={handleScientificChange}
-            />
-          </label>
-          <button type="submit">Submit</button>
-        </form>
+      return (
+        <div className="form-container">
+          <h3>Update Name</h3>
+          <form onSubmit={handleSubmit}>
+            <label>
+              Old Name:
+              <input
+                type="text"
+                name="name"
+                value={plantData.plantName}
+                onChange={handlePlantName}
+              />
+            </label>
+            <label>
+              Name:
+              <input
+                type="text"
+                name="name"
+                value={plantData.updatedPlant.name}
+                onChange={handleNameChange}
+              />
+            </label>
+            <label>
+              ScientificName:
+              <input
+                type="text"
+                name="scientificName"
+                value={plantData.updatedPlant.scientificName}
+                onChange={handleScientificChange}
+              />
+            </label>
+            <button type="submit">Submit</button>
+          </form>
         </div>
       );
-}
+    }
 
 export default EditPlantComponent;
