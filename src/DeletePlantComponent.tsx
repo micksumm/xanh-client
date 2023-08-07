@@ -29,7 +29,7 @@ function DeletePlantComponent() {
       };
 
     return (
-        <div>
+        <div className="form-container">
             <h3>Delete</h3>
             <form onSubmit={handleSubmit}>
             <label>
