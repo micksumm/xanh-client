@@ -2,14 +2,13 @@ import React, {useState, FormEvent} from 'react';
 import axios from 'axios';
 
 function DeletePlantComponent() {
-    const [plantData, setPlantData] = useState({
-        name: '', 
-        scientificName: ''
+    const [request, setRequest] = useState({
+        id: ''
     });
 
     const handleChange = (event:  React.ChangeEvent<HTMLInputElement>) => {
-        setPlantData({
-            ...plantData,
+      setRequest({
+        ...request,
             [event.target.name]: event.target.value
         });
     }
@@ -17,7 +16,7 @@ function DeletePlantComponent() {
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         
-        axios.delete(`/plant/delete?name=${plantData.name}`)
+        axios.delete(`/plant/delete?id=${request.id}`)
           .then((response) => {
             // Handle the response
             console.log(response.data);
@@ -29,15 +28,15 @@ function DeletePlantComponent() {
       };
 
     return (
-        <div>
+        <div className="form-container">
             <h3>Delete</h3>
             <form onSubmit={handleSubmit}>
             <label>
-                Name:
+                Id:
                 <input
-                type="text"
-                name="name"
-                value={plantData.name}
+                type="number"
+                name="id"
+                value={request.id}
                 onChange={handleChange}
                 />
             </label>

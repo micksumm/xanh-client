@@ -6,6 +6,7 @@ import EditPlantComponent from './EditPlantComponent';
 import DeletePlantComponent from './DeletePlantComponent';
 
 interface Plant {
+  id: number;
   name: string;
   scientificName: string;
 }
@@ -34,7 +35,7 @@ function App() {
         <div className="card-container">
           {plants.map((plant) => (
             <div key={plant.name} className="card">
-              <h3 className="card-title">{plant.name}</h3>
+              <h3 className="card-title">{plant.id}. {plant.name}</h3>
               <p className="card-text">{plant.scientificName}</p>
             </div>
           ))}

@@ -44,7 +44,7 @@
 
 .container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 0px; /* Decrease the gap between columns */
   justify-content: center;
   margin: 20px; /* Adjust the margin as desired */
