@@ -3,22 +3,22 @@ import axios from 'axios';
 
 function EditPlantComponent() {
     const [plantData, setPlantData] = useState<UpdatedPlantRequest>({
-        id: 0,
+        id: null,
         updatedPlant: { 
-          id: 0,
+          id: null,
           name: '',
           scientificName: ''
         }
     });
 
     interface Plant {
-      id: number;
+      id: number | null;
       name: string;
       scientificName: string;
     }
     
     interface UpdatedPlantRequest {
-      id: number;
+      id: number | null;
       updatedPlant: Plant;
     }
 
@@ -76,7 +76,7 @@ function EditPlantComponent() {
               <input
                 type="number"
                 name="id"
-                value={plantData.id}
+                value={plantData.id === null ? '' : plantData.id}
                 onChange={handlePlantName}
               />
             </label>
