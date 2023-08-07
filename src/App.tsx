@@ -3,6 +3,7 @@ import './App.css';
 import axios from 'axios';
 import CreatePlantComponent from './CreatePlantComponent';
 import EditPlantComponent from './EditPlantComponent';
+import DeletePlantComponent from './DeletePlantComponent';
 
 interface Plant {
   name: string;
@@ -26,6 +27,7 @@ function App() {
     <div className="background">
       <div className="container">
         <CreatePlantComponent />
+        <DeletePlantComponent/>
         <EditPlantComponent />
       </div>
       <div className="App">
