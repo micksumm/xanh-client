@@ -3,28 +3,33 @@ import axios from 'axios';
 
 function EditPlantComponent() {
     const [plantData, setPlantData] = useState<UpdatedPlantRequest>({
-        plantName: '',
+        id: 0,
         updatedPlant: { 
+          id: 0,
           name: '',
           scientificName: ''
         }
-  
     });
 
     interface Plant {
+      id: number;
       name: string;
       scientificName: string;
     }
     
     interface UpdatedPlantRequest {
-      plantName: string;
+      id: number;
       updatedPlant: Plant;
     }
 
     const handlePlantName = (event:  React.ChangeEvent<HTMLInputElement>) => {
       setPlantData({
           ...plantData,
-          plantName: event.target.value,
+          updatedPlant: {
+            ...plantData.updatedPlant,
+            id: parseInt(event.target.value, 10)
+          },
+          id: parseInt(event.target.value, 10),
       });
     }
 
@@ -64,19 +69,19 @@ function EditPlantComponent() {
 
       return (
         <div className="form-container">
-          <h3>Update Name</h3>
+          <h3>Update</h3>
           <form onSubmit={handleSubmit}>
             <label>
-              Old Name:
+              Id:
               <input
-                type="text"
-                name="name"
-                value={plantData.plantName}
+                type="number"
+                name="id"
+                value={plantData.id}
                 onChange={handlePlantName}
               />
             </label>
             <label>
-              Name:
+              New Name:
               <input
                 type="text"
                 name="name"
@@ -85,7 +90,7 @@ function EditPlantComponent() {
               />
             </label>
             <label>
-              ScientificName:
+              New ScientificName:
               <input
                 type="text"
                 name="scientificName"
