@@ -1,8 +1,14 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 50vh;
   background-color: #FEFEE3;
 }
 
@@ -10,6 +16,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+  margin-bottom: 5px; /* Adjust the margin as desired */
 }
 
 .card {
@@ -33,4 +40,18 @@
 
 .card-text {
   font-size: 1rem;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0px; /* Decrease the gap between columns */
+  justify-content: center;
+  margin: 20px; /* Adjust the margin as desired */
+  background-color: #fefee3;
+  width: 100%; /* Add this line to take up full width */
+}
+
+.background {
+  background-color: #FEFEE3;
 }

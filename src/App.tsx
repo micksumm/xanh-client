@@ -2,6 +2,7 @@ import React, { useState, useEffect} from 'react';
 import './App.css';
 import axios from 'axios';
 import CreatePlantComponent from './CreatePlantComponent';
+import EditPlantComponent from './EditPlantComponent';
 import DeletePlantComponent from './DeletePlantComponent';
 
 interface Plant {
@@ -23,9 +24,12 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <CreatePlantComponent/>
-      <DeletePlantComponent/>
+    <div className="background">
+      <div className="container">
+        <CreatePlantComponent />
+        <DeletePlantComponent/>
+        <EditPlantComponent />
+      </div>
       <div className="App">
         <div className="card-container">
           {plants.map((plant) => (

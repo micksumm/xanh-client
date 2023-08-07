@@ -1,5 +1,6 @@
 import React, {useState, FormEvent} from 'react';
 import axios from 'axios';
+import './CreatePlantComponent.css';
 
 function CreatePlantComponent() {
     const [plantData, setPlantData] = useState({
@@ -28,8 +29,9 @@ function CreatePlantComponent() {
           });
       };
 
-    return (
-        <form onSubmit={handleSubmit}>
+      return (
+        <form className="form-container" onSubmit={handleSubmit}>
+          <h3>Add A Plant</h3>
           <label>
             Name:
             <input
@@ -51,6 +53,6 @@ function CreatePlantComponent() {
           <button type="submit">Submit</button>
         </form>
       );
-}
+    }
 
 export default CreatePlantComponent;
